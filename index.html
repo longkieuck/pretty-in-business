@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pretty in Business</title>
+    <link rel="icon" href="Pretty in Buisness.jpg" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #010101;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #f6f6f6;
+            color: #010101;
+            padding: 30px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-right: 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            font-family: 'Dancing Script', cursive;
+            color: #eac7db;
+            font-weight: 700;
+        }
+        .welcome {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: white;
+            margin: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .social-links {
+            margin: 30px 0;
+        }
+        .social-links a {
+            margin: 0 15px;
+            color: #d7bb84;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: #010101;
+        }
+        .bio {
+            max-width: 700px;
+            margin: 30px auto;
+            font-size: 18px;
+        }
+        .photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 30px auto;
+            display: block;
+            object-fit: cover;
+            border: 5px solid #efd4d3;
+        }
+        .tabs {
+            margin: 30px 20px;
+        }
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            background-color: #efd4d3;
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+        }
+        .tab-button {
+            background: none;
+            border: none;
+            color: #010101;
+            padding: 15px 30px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .tab-button.active {
+            background-color: #d7bb84;
+            color: #010101;
+        }
+        .tab-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 0 0 15px 15px;
+            display: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .sub-tabs {
+            display: flex;
+            margin-bottom: 30px;
+        }
+        .sub-tab-button {
+            background: #efd4d3;
+            color: #010101;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 0;
+            font-weight: bold;
+            flex: 1;
+            transition: background-color 0.3s;
+        }
+        .sub-tab-button.active {
+            background: #d7bb84;
+        }
+        .sub-tab-content {
+            display: none;
+        }
+        .sub-tab-content.active {
+            display: block;
+        }
+        .section {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section h3 {
+            color: #d7bb84;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .section-img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .section p {
+            font-size: 16px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .link-button {
+            background-color: #d7bb84;
+            color: #010101;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 15px 10px;
+            display: inline-block;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .link-button:hover {
+            background-color: #efd4d3;
+        }
+        .unsure-button {
+            background-color: #efd4d3;
+            color: #010101;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 15px 10px;
+            display: inline-block;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .unsure-button:hover {
+            background-color: #d7bb84;
+        }
+        @media (max-width: 768px) {
+            .tab-buttons {
+                flex-direction: column;
+            }
+            .sub-tabs {
+                flex-direction: column;
+            }
+            .sub-tab-button {
+                flex: none;
+                width: 100%;
+                margin: 5px 0;
+                border-radius: 8px;
+            }
+            .welcome {
+                margin: 10px;
+                padding: 30px 15px;
+            }
+            .social-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .social-links a {
+                margin: 5px 10px;
+            }
+            .section h3 {
+                font-size: 24px;
+            }
+            .section p {
+                font-size: 14px;
+            }
+            .link-button, .unsure-button {
+                padding: 10px 20px;
+                margin: 10px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Pretty in Buisness.jpg" alt="Pretty in Business Logo" class="logo">
+        <h1>Pretty in Business</h1>
+    </header>
+
+    <div class="welcome">
+        <h2>Contact me 📞</h2>
+        <div class="social-links">
+            <a href="https://www.facebook.com/cassie.reynolds.14"><i class="fab fa-facebook-f"></i> Facebook</a>
+            <a href="https://www.instagram.com/cassie_reynolds/"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://www.snapchat.com/@cassie_reynolds/"><i class="fab fa-snapchat-ghost"></i> Snapchat</a>
+        </div>
+        <img src="cassie_avatar.jpg" alt="Cassie Reynolds" class="photo">
+        <div class="bio">
+            <p>Hi, I'm Cassie Reynolds. Welcome to Pretty in Business, where I share opportunities in travel, wellness, mentorship, and courses. Connect with me to explore how we can work together!</p>
+        </div>
+    </div>
+
+    <div class="tabs">
+        <div class="tab-buttons">
+            <button class="tab-button active" onclick="openTab('business')">Business Opportunities</button>
+        </div>
+        <div id="business" class="tab-content active">
+            <div class="sub-tabs">
+                <button class="sub-tab-button active" onclick="openSubTab('travel')">Travel</button>
+                <button class="sub-tab-button" onclick="openSubTab('wellness')">Wellness</button>
+                <button class="sub-tab-button" onclick="openSubTab('mentorship')">Affiliate Mentorship</button>
+                <button class="sub-tab-button" onclick="openSubTab('courses')">Courses</button>
+            </div>
+            <div id="travel" class="sub-tab-content active section">
+                <h3>Travel Affiliate Opportunities</h3>
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Travel Affiliate Marketing" class="section-img">
+                <p>Embark on a journey where adventure meets income potential. Our travel affiliate programs connect you with top-tier travel brands, allowing you to earn commissions by promoting dream destinations, luxury resorts, and unique experiences. Whether you're passionate about beach getaways, mountain expeditions, or cultural immersions, there's a niche waiting for you.</p>
+                <p>With our comprehensive training and support, you'll learn how to create engaging content that resonates with travel enthusiasts. Build your audience, share your wanderlust, and turn your love for exploration into a sustainable online business. Join a community of travel influencers who are not just seeing the world, but profiting from it too.</p>
+                <a href="https://www.mwrlife.com/Prettyinbusiness" class="link-button">Join Travel Program</a>
+                <a href="https://www.instagram.com/cassie_reynolds/" class="unsure-button">Unsure? DM Me</a>
+            </div>
+            <div id="wellness" class="sub-tab-content section">
+                <h3>Wellness Affiliate Programs</h3>
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wellness and Health Products" class="section-img">
+                <p>Dive into the thriving world of wellness affiliate marketing, where health meets wealth. Partner with leading brands in fitness, nutrition, mental health, and holistic wellness to promote products that truly make a difference in people's lives. From organic supplements and yoga gear to meditation apps and eco-friendly wellness items, our programs offer diverse opportunities to align your passion with profit.</p>
+                <p>Our expert guidance will help you navigate the wellness industry, understand trending products, and create authentic content that builds trust with your audience. Whether you're a fitness enthusiast, a nutrition guru, or someone committed to mental well-being, you'll find your perfect niche in this growing market. Join us in promoting wellness solutions that empower others while building your own successful affiliate business.</p>
+                <a href="https://www.LiveGood.com/prettyinbusiness" class="link-button">Join Wellness Program</a>
+                <a href="https://www.instagram.com/cassie_reynolds/" class="unsure-button">Unsure? DM Me</a>
+            </div>
+            <div id="mentorship" class="sub-tab-content section">
+                <h3>Affiliate Marketing Mentorship</h3>
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Business Mentorship and Coaching" class="section-img">
+                <p>Unlock your potential in the affiliate marketing world with our comprehensive mentorship program. Designed for aspiring entrepreneurs and seasoned marketers alike, our mentorship offers personalized guidance, strategic insights, and proven techniques to accelerate your success. Learn from industry experts who have built thriving affiliate businesses from the ground up.</p>
+                <p>Our structured program covers everything from niche selection and audience building to advanced conversion strategies and scaling techniques. You'll receive one-on-one coaching, access to exclusive resources, and ongoing support as you navigate the complexities of affiliate marketing. Whether you're just starting out or looking to take your existing business to the next level, our mentorship will provide the roadmap you need to achieve sustainable, long-term success in this lucrative field.</p>
+                <a href="https://www.affiliatementor.com/vsl5/prettyinbusiness" class="link-button">Join Mentorship Program</a>
+                <a href="https://www.instagram.com/cassie_reynolds/" class="unsure-button">Unsure? DM Me</a>
+            </div>
+            <div id="courses" class="sub-tab-content section">
+                <h3>Business Courses and Training</h3>
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Online Business Courses and Education" class="section-img">
+                <p>Invest in your entrepreneurial journey with our curated selection of high-quality business courses and training programs. From digital marketing fundamentals to advanced e-commerce strategies, our courses are designed to equip you with the skills and knowledge needed to thrive in today's competitive business landscape. Learn from industry leaders and gain practical insights that you can immediately apply to your ventures.</p>
+                <p>Our course library covers a wide range of topics including social media marketing, SEO optimization, content creation, email marketing, and business development. Whether you're looking to start your first online business or scale an existing one, these comprehensive programs provide the foundation you need. With flexible learning options and lifetime access to course materials, you can study at your own pace and revisit content as needed. Transform your aspirations into achievements with our proven educational resources.</p>
+                <a href="https://prettyinbuisness.com" class="link-button">Access Courses</a>
+                <a href="https://www.instagram.com/cassie_reynolds/" class="unsure-button">Unsure? DM Me</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            event.currentTarget.className += " active";
+        }
+
+        function openSubTab(subTabName) {
+            var i, subtabcontent, subtabbuttons;
+            subtabcontent = document.getElementsByClassName("sub-tab-content");
+            for (i = 0; i < subtabcontent.length; i++) {
+                subtabcontent[i].style.display = "none";
+            }
+            subtabbuttons = document.getElementsByClassName("sub-tab-button");
+            for (i = 0; i < subtabbuttons.length; i++) {
+                subtabbuttons[i].className = subtabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(subTabName).style.display = "block";
+            event.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>
