@@ -182,6 +182,45 @@
         .unsure-button:hover {
             background-color: #d7bb84;
         }
+        .music-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #efd4d3;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+        .music-button:hover {
+            background-color: #d7bb84;
+        }
+        .music-button i {
+            font-size: 24px;
+            color: #010101;
+        }
+        .music-button.paused::after {
+            content: "×";
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: red;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
         @media (max-width: 768px) {
             .tab-buttons {
                 flex-direction: column;
@@ -216,6 +255,13 @@
             .link-button, .unsure-button {
                 padding: 10px 20px;
                 margin: 10px 5px;
+            }
+            .music-button {
+                width: 50px;
+                height: 50px;
+            }
+            .music-button i {
+                font-size: 20px;
             }
         }
     </style>
@@ -285,6 +331,14 @@
         </div>
     </div>
 
+    <audio id="bg-music" loop preload="auto" autoplay>
+        <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="music-btn" class="music-button">
+        <i class="fas fa-music"></i>
+    </div>
+
     <script>
         function openTab(tabName) {
             var i, tabcontent, tabbuttons;
@@ -313,6 +367,26 @@
             document.getElementById(subTabName).style.display = "block";
             event.currentTarget.className += " active";
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('bg-music');
+            const btn = document.getElementById('music-btn');
+
+            // Try to autoplay
+            audio.play().catch(() => {
+                // Autoplay blocked, user can click to play
+            });
+
+            btn.addEventListener('click', function() {
+                if (audio.paused) {
+                    audio.play();
+                    btn.classList.remove('paused');
+                } else {
+                    audio.pause();
+                    btn.classList.add('paused');
+                }
+            });
+        });
     </script>
 </body>
 </html>
